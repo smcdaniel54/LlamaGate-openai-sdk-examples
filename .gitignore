@@ -1,0 +1,21 @@
+# Test files (not included in repo)
+test_example.py
+setup-llamagate.ps1
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
