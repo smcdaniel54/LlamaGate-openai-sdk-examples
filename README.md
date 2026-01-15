@@ -16,7 +16,7 @@ pip install openai
 
 Ensure LlamaGate is running and accessible at `http://localhost:11435/v1`.
 
-**Note:** The examples below use `"llama3"` as the default model. Replace it with any model available in your Ollama installation (e.g., `llama3.2`, `mistral`, `codellama`). To see available models, run `ollama list`. To pull a model, run `ollama pull <model-name>`.
+**Note:** LlamaGate requires you to specify a model in each request (it does not have a default model). This project uses `"mistral"` (Mistral 7B) as the default model in all examples, matching LlamaGate's recommended default (works on CPU-only or 8GB VRAM). Replace it with any model available in your Ollama installation (e.g., `llama3`, `llama3.2`, `codellama`). To see available models, run `ollama list`. To pull a model, run `ollama pull <model-name>`.
 
 ## Examples
 
@@ -31,7 +31,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="llama3",
+    model="mistral",
     messages=[
         {"role": "user", "content": "Hello, how are you?"}
     ]
@@ -51,7 +51,7 @@ client = OpenAI(
 )
 
 stream = client.chat.completions.create(
-    model="llama3",
+    model="mistral",
     messages=[
         {"role": "user", "content": "Write a short poem about coding."}
     ],
@@ -77,7 +77,7 @@ client = OpenAI(
 
 try:
     response = client.chat.completions.create(
-        model="llama3",
+        model="mistral",
         messages=[{"role": "user", "content": "Hello!"}]
     )
     print(response.choices[0].message.content)

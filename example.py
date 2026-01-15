@@ -4,9 +4,12 @@ LlamaGate OpenAI SDK Examples
 This script demonstrates using the official OpenAI SDK with LlamaGate.
 Ensure LlamaGate is running at http://localhost:11435/v1 before running.
 
-Note: The default model used in these examples is "llama3".`n      Replace it with any model available in your Ollama installation.
-      Common models: llama3, llama3.2, mistral, codellama, etc.
-      To see available models: ollama list
+Note: LlamaGate requires you to specify a model in each request (it does not
+      have a default model). This project uses "mistral" (Mistral 7B) as the
+      default model in all examples, matching LlamaGate's recommended default
+      (works on CPU-only or 8GB VRAM). Replace it with any model available in
+      your Ollama installation. Common models: mistral, llama3, llama3.2,
+      codellama, etc. To see available models: ollama list
       To pull a model: ollama pull <model-name>
 """
 
@@ -19,7 +22,7 @@ def non_streaming_example():
     
     try:
         response = client.chat.completions.create(
-            model="llama3",
+            model="mistral",
             messages=[
                 {"role": "user", "content": "Hello, how are you?"}
             ]
@@ -40,7 +43,7 @@ def streaming_example():
     
     try:
         stream = client.chat.completions.create(
-            model="llama3",
+            model="mistral",
             messages=[
                 {"role": "user", "content": "Write a short poem about coding."}
             ],
