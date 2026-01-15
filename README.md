@@ -16,7 +16,7 @@ pip install openai
 
 Ensure LlamaGate is running and accessible at `http://localhost:11435/v1`.
 
-**Note:** Replace `"llama3"` in the examples below with any model available in your Ollama installation (e.g., `llama3.2`, `mistral`, `codellama`). To see available models, run `ollama list`. To pull a model, run `ollama pull <model-name>`.
+**Note:** The examples below use `"llama3"` as the default model. Replace it with any model available in your Ollama installation (e.g., `llama3.2`, `mistral`, `codellama`). To see available models, run `ollama list`. To pull a model, run `ollama pull <model-name>`.
 
 ## Examples
 

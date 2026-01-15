@@ -62,10 +62,38 @@ def streaming_example():
         raise
 
 
+def error_handling_example():
+    """Example of proper error handling."""
+    print("=== Error Handling Example ===\n")
+    
+    try:
+        response = client.chat.completions.create(
+            model="nonexistent-model",
+            messages=[
+                {"role": "user", "content": "This will fail"}
+            ]
+        )
+    except APIError as e:
+        print(f"API Error caught:")
+        print(f"  Status Code: {e.status_code}")
+        print(f"  Message: {e.message}")
+        print(f"  Type: {e.type}\n")
+    except Exception as e:
+        print(f"Unexpected error: {e}\n")
+
+
 if __name__ == "__main__":
+    # Configure client to use LlamaGate
+    client = OpenAI(
+        base_url="http://localhost:11435/v1",
+        api_key="not-needed"
+    )
+    
     try:
         non_streaming_example()
         streaming_example()
+        error_handling_example()
     except Exception as e:
         print(f"Error: {e}")
         print("\nMake sure LlamaGate is running at http://localhost:11435/v1")
+        print("To check available models: ollama list")
