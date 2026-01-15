@@ -16,6 +16,8 @@ pip install openai
 
 Ensure LlamaGate is running and accessible at `http://localhost:11435/v1`.
 
+**Note:** Replace `"llama3"` in the examples below with any model available in your Ollama installation (e.g., `llama3.2`, `mistral`, `codellama`). To see available models, run `ollama list`. To pull a model, run `ollama pull <model-name>`.
+
 ## Examples
 
 ### Non-Streaming Example
@@ -62,6 +64,28 @@ for chunk in stream:
 ```
 
 See `example.py` for complete runnable examples.
+
+### Error Handling Example
+
+```python
+from openai import OpenAI, APIError
+
+client = OpenAI(
+    base_url="http://localhost:11435/v1",
+    api_key="not-needed"
+)
+
+try:
+    response = client.chat.completions.create(
+        model="llama3",
+        messages=[{"role": "user", "content": "Hello!"}]
+    )
+    print(response.choices[0].message.content)
+except APIError as e:
+    print(f"API Error: {e.status_code} - {e.message}")
+except Exception as e:
+    print(f"Error: {e}")
+```
 
 ## Why LlamaGate
 
