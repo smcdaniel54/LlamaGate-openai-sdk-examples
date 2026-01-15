@@ -4,7 +4,7 @@ LlamaGate OpenAI SDK Examples
 This script demonstrates using the official OpenAI SDK with LlamaGate.
 Ensure LlamaGate is running at http://localhost:11435/v1 before running.
 
-Note: Replace "llama3" with any model available in your Ollama installation.
+Note: The default model used in these examples is "llama3".`n      Replace it with any model available in your Ollama installation.
       Common models: llama3, llama3.2, mistral, codellama, etc.
       To see available models: ollama list
       To pull a model: ollama pull <model-name>
