@@ -1,12 +1,20 @@
 # LlamaGate OpenAI SDK Examples
 
-This repository demonstrates using the official OpenAI SDK with [LlamaGate](https://github.com/smcdaniel54/LlamaGate), an OpenAI-compatible API gateway that serves as a drop-in replacement for connecting to local LLMs (Ollama).
+Complete examples and tutorial for using the official OpenAI Python SDK with [LlamaGate](https://github.com/smcdaniel54/LlamaGate). Learn how to connect your OpenAI SDK code to local LLMs running on Ollama with zero code changes.
 
 ## Overview
 
-This repository shows how to use the official OpenAI Python SDK with LlamaGate. By configuring the SDK's `base_url` parameter to point at LlamaGate, you can use existing OpenAI SDK code without modification. LlamaGate handles the translation between OpenAI's API format and Ollama's local endpoints, making it seamless to switch between OpenAI's cloud services and local models.
+This repository provides working examples and a step-by-step guide for using the official OpenAI Python SDK with LlamaGate, an OpenAI-compatible API gateway that serves as a drop-in replacement for connecting to local LLMs (Ollama). 
 
-The examples below demonstrate both non-streaming and streaming (SSE) chat completions using the OpenAI SDK configured to use LlamaGate as the backend.
+By simply configuring the SDK's `base_url` parameter to point at LlamaGate, you can use your existing OpenAI SDK code without any modifications. LlamaGate handles the translation between OpenAI's API format and Ollama's local endpoints, making it seamless to switch between OpenAI's cloud services and local models.
+
+**What you'll learn:**
+- How to configure the OpenAI SDK to work with local LLMs
+- Non-streaming and streaming (SSE) chat completion examples
+- Error handling patterns for local LLM development
+- Best practices for using Ollama models with OpenAI-compatible APIs
+
+The examples below demonstrate both non-streaming and streaming chat completions using the OpenAI SDK configured to use LlamaGate as the backend.
 
 ## Installation
 
@@ -27,7 +35,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="http://localhost:11435/v1",
-    api_key="not-needed"
+    api_key="not-needed"  # If you enable LlamaGate API-key auth, set api_key=... accordingly
 )
 
 response = client.chat.completions.create(
@@ -47,7 +55,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="http://localhost:11435/v1",
-    api_key="not-needed"
+    api_key="not-needed"  # If you enable LlamaGate API-key auth, set api_key=... accordingly
 )
 
 stream = client.chat.completions.create(
@@ -72,7 +80,7 @@ from openai import OpenAI, APIError
 
 client = OpenAI(
     base_url="http://localhost:11435/v1",
-    api_key="not-needed"
+    api_key="not-needed"  # If you enable LlamaGate API-key auth, set api_key=... accordingly
 )
 
 try:
@@ -89,4 +97,13 @@ except Exception as e:
 
 ## Why LlamaGate
 
-LlamaGate enables you to use the familiar OpenAI SDK interface with local models running via Ollama. This provides a consistent development experience whether you're prototyping with local models or deploying with cloud services. For more information, visit the [LlamaGate repository](https://github.com/smcdaniel54/LlamaGate).
+LlamaGate enables you to use the familiar OpenAI SDK interface with local models running via Ollama. This provides a consistent development experience whether you're prototyping with local models or deploying with cloud services.
+
+**Key benefits:**
+- **Zero code changes**: Use your existing OpenAI SDK code as-is
+- **Local development**: Test and develop with local LLMs without API costs
+- **Privacy**: Keep your data local with on-premise model inference
+- **Flexibility**: Easily switch between local and cloud models
+- **Open source**: Full control over your LLM infrastructure
+
+Perfect for developers who want to prototype locally, reduce API costs, maintain data privacy, or build applications that work with both local and cloud-based LLM services.

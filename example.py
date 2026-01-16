@@ -87,6 +87,7 @@ def error_handling_example():
 
 if __name__ == "__main__":
     # Configure client to use LlamaGate
+    # Note: If you enable LlamaGate API-key auth, set api_key=... accordingly
     client = OpenAI(
         base_url="http://localhost:11435/v1",
         api_key="not-needed"
