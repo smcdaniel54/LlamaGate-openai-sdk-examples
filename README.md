@@ -67,8 +67,10 @@ stream = client.chat.completions.create(
 )
 
 for chunk in stream:
-    if chunk.choices[0].delta.content is not None:
-        print(chunk.choices[0].delta.content, end="", flush=True)
+    if chunk.choices and len(chunk.choices) > 0:
+        delta = chunk.choices[0].delta
+        if delta and delta.content is not None:
+            print(delta.content, end="", flush=True)
 ```
 
 See `example.py` for complete runnable examples.
